@@ -17,6 +17,8 @@ if APP_ENV == "production":
 
     GROQ_API_KEY = get_secret("groq-api-key")
     OPEN_WEATHER_API_KEY = get_secret("open-weather-api-key")
+    TAVILY_API_KEY = get_secret("tavily-api-key")
 else:
     GROQ_API_KEY = os.getenv("GROQ_API_KEY")
     OPEN_WEATHER_API_KEY = os.getenv("OPEN_WEATHER_API_KEY")
+    TAVILY_API_KEY = os.getenv("TAVILY_API_KEY")
