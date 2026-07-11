@@ -1,29 +1,33 @@
-import os
 from typing import TypedDict, List
+
 from langgraph.graph import StateGraph, END
+from langchain_groq import ChatGroq
+from langchain_core.callbacks import StreamingStdOutCallbackHandler
+from langchain_core.messages import BaseMessage
+
+from app.config.settings import (
+    GROQ_API_KEY,
+    LLM_MODEL,
+    TEMPERATURE,
+)
+from app.memory.mongo_memory import get_mongo_checkpointer
+from app.prompts import CALCULATOR_PROMPT
 from app.tools.weather_tool import get_current_weather
 from app.tools.wikipedia_tools import wikipedia_search
 from app.tools.search_tool import news_search
 from app.tools.calculator_tool import calculator
 from app.tools.date_time_tool import get_current_datetime
 from app.utils.extract_expression import is_math, extract_expression
-from app.utils.date_time_expression import is_datetime_query
-from app.prompts import CALCULATOR_PROMPT
-from langchain_groq import ChatGroq
-from langchain_core.callbacks import StreamingStdOutCallbackHandler
-from app.memory.mongo_memory import get_mongo_checkpointer
-from langchain_core.messages import BaseMessage
-from app.utils.date_time_expression import extract_location
-
-from dotenv import load_dotenv
-
-load_dotenv()
-
+from app.utils.date_time_expression import (
+    is_datetime_query,
+    extract_location,
+)
 
 def build_llm():
     return ChatGroq(
-        model_name=os.getenv("LLM_MODEL"),
-        temperature=os.getenv("TEMPERATURE"),
+        api_key=GROQ_API_KEY,
+        model_name=LLM_MODEL,
+        temperature=TEMPERATURE,
         streaming=False,
         callbacks=[StreamingStdOutCallbackHandler()],
     )
