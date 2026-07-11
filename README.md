@@ -1,213 +1,129 @@
-# 🤖 Multi-Tool AI Assistant (LangGraph + Groq)
+# 🤖 Multi-Tool AI Assistant
 
-A production-ready AI assistant built using **LangGraph**, **Groq LLM**, and a modular microservices architecture.
+A production-ready AI Assistant built using Python that combines Retrieval-Augmented Generation (RAG), memory, web search, and multiple AI tools into a single application.
 
-The system combines deterministic routing, intelligent tool orchestration, and a separate Retrieval-Augmented Generation (RAG) service. It is designed for scalable, cloud-native deployment using **Microsoft Azure**, **Terraform**, and **GitHub Actions**.
+The project follows enterprise software engineering practices including GitHub Flow, CI/CD, Azure App Service deployment, Azure Key Vault secret management, and OIDC authentication.
 
 ---
 
 # 🚀 Features
 
-## 🧠 Intelligent Routing
-
-- Rule-based intent detection
-- Regex-based classification
-- LLM fallback classifier
-- LangGraph conditional execution
-- State-aware workflow orchestration
-
----
-
-## 🧮 Deterministic Tools
-
-- Calculator Tool
-- Weather Tool
-- Date & Time Tool
-- Wikipedia Tool
+- 🔍 Retrieval-Augmented Generation (RAG)
+- 💬 Conversation Memory
+- 🧠 Multi-step AI Agent
+- 🌐 Web Search Tool
+- 📄 Document Question Answering
+- 🗂 Modular Architecture
+- 🔐 Azure Key Vault Integration
+- ☁ Azure App Service Deployment
+- ⚙ GitHub Actions CI/CD
+- 🔑 OIDC Authentication (Passwordless Azure Login)
+- 📈 Production-ready Project Structure
 
 ---
 
-## 📚 RAG Microservice
+# 🛠 Tech Stack
 
-- FastAPI-based REST API
-- LlamaIndex
-- Semantic document retrieval
-- Vector indexing
-- Embedding search
+## Programming Language
 
----
+- Python 3.12
 
-## ⚡ Performance & Cost Optimization
-
-- Deterministic routing
-- Reduced LLM calls
-- Configurable recursion limits
-- Dynamic model selection (8B / 70B)
-
----
-
-## ☁ Cloud Deployment
-
-- Azure App Service
-- Azure Key Vault
-- Managed Identity
-- Azure RBAC
-- GitHub Actions Deployment
-- Infrastructure as Code using Terraform
-
----
-
-# 🏗 Architecture
-
-```text
-                        GitHub
-
-                           │
-
-                           ▼
-
-                  GitHub Actions
-
-                           │
-
-                           ▼
-
-                 Azure App Service
-
-                           │
-
-                  Managed Identity
-
-                           │
-
-          ┌────────────────┴──────────────┐
-
-          ▼                               ▼
-
-   Azure Key Vault                App Settings
-
-          │
-
-          ▼
-
-   Multi-Tool AI Assistant
-
-          │
-
-    ┌─────┼──────────┐
-
-    ▼     ▼          ▼
-
- Weather  Wiki      Calculator
-
-          │
-
-          ▼
-
-      RAG Service
-
-          │
-
-          ▼
-
-     LlamaIndex
-
-          │
-
-          ▼
-
-      Groq LLM
-```
-
----
-
-# 🧰 Tech Stack
-
-## AI
+## AI Frameworks
 
 - LangGraph
 - LangChain
-- Groq LLM
-- LlamaIndex
+- Groq
+- OpenAI Compatible APIs
 
-## Backend
+## RAG
 
-- Python 3.12
-- FastAPI
-- Uvicorn
-- Gunicorn
+- ChromaDB
+- Sentence Transformers
+- Recursive Text Splitter
+
+## Frontend
+
+- Streamlit
 
 ## Cloud
 
 - Microsoft Azure
-- Azure App Service
-- Azure Key Vault
-- Managed Identity
+    - App Service
+    - Key Vault
+    - Managed Identity
 
-## Infrastructure
+## CI/CD
 
-- Terraform
-- Azure CLI
 - GitHub Actions
+- OIDC Authentication
 
-## Vector Search
+## Others
 
-- HuggingFace Embeddings
-- LlamaIndex
-
-## Database
-
-- MongoDB
-
-## Quality
-
-- Ruff
-- Black
-- Pytest
+- python-dotenv
+- Azure Identity
+- Azure Key Vault Secrets
+- Requests
 
 ---
 
 # 📂 Project Structure
 
-```text
-Multi-Tool-AI-Assistant/
-
-├── app/
-│   ├── api/
-│   ├── core/
-│   ├── graph/
-│   ├── prompts/
-│   ├── services/
-│   ├── tools/
-│   └── main.py
-│
-├── rag-service/
-│
-├── terraform/
-│   ├── app-service.tf
-│   ├── key-vault.tf
-│   ├── resource-group.tf
-│   ├── role-assignment.tf
-│   └── ...
+```
+Multi-Tool-AI-Assistant
 │
 ├── .github/
 │   └── workflows/
+│       ├── ci.yml
+│       └── cd.yml
 │
-├── pyproject.toml
-├── poetry.lock
-└── README.md
+├── src/
+│   └── app/
+│       ├── config/
+│       ├── infrastructure/
+│       ├── memory/
+│       ├── tools/
+│       ├── utils/
+│       └── main.py
+│
+├── tests/
+│
+├── data/
+│
+├── requirements.txt
+├── README.md
+└── .gitignore
 ```
 
 ---
 
-# ⚙ Local Development
+# ⚙ Local Setup
 
-## Clone
+## Clone Repository
 
 ```bash
-git clone https://github.com/<username>/Multi-Tool-AI-Assistant.git
+git clone https://github.com/nikunj-jadav-backend-developer/Multi-Tool-AI-Assistant.git
 
 cd Multi-Tool-AI-Assistant
+```
+
+---
+
+## Create Virtual Environment
+
+Linux
+
+```bash
+python3 -m venv .venv
+
+source .venv/bin/activate
+```
+
+Windows
+
+```powershell
+python -m venv .venv
+
+.venv\Scripts\activate
 ```
 
 ---
@@ -215,190 +131,226 @@ cd Multi-Tool-AI-Assistant
 ## Install Dependencies
 
 ```bash
-poetry install
-```
+pip install --upgrade pip
 
-Activate
-
-```bash
-poetry shell
+pip install -r requirements.txt
 ```
 
 ---
 
-## Local Environment
+## Configure Environment
 
-Create `.env`
+Create
+
+```
+.env
+```
+
+Example
 
 ```env
-GROQ_API_KEY=
+GROQ_API_KEY=xxxxxxxxxxxxxxxx
 
-OPEN_WEATHER_API_KEY=
+OPEN_WEATHER_API_KEY=xxxxxxxxxxxx
 
-LANGSMITH_API_KEY=
+LLM_MODEL=llama-3.1-8b-instant
+
+TEMPERATURE=0.4
 ```
 
 ---
 
-## Run
+## Run Application
 
 ```bash
-uvicorn app.main:app --reload
-```
-
-Swagger
-
-```
-http://localhost:8000/docs
+streamlit run src/app/main.py
 ```
 
 ---
 
 # ☁ Azure Deployment
 
-Infrastructure is provisioned using Terraform.
+This project is deployed using
 
-Resources include:
-
-- Azure Resource Group
 - Azure App Service
 - Azure Key Vault
 - Managed Identity
-- RBAC Role Assignments
+- GitHub Actions
+- OIDC Authentication
 
-Deploy Infrastructure
+---
 
-```bash
-terraform init
+# Azure Architecture
 
-terraform plan
+```
+GitHub
+    │
+    ▼
+GitHub Actions
 
-terraform apply
+    │
+    ▼
+Azure Login (OIDC)
+
+    │
+    ▼
+Azure App Service
+
+    │
+Managed Identity
+
+    │
+    ▼
+Azure Key Vault
+
+    │
+    ▼
+Secrets
+
+    │
+    ▼
+Application
 ```
 
 ---
 
-# 🔐 Configuration Strategy
+# Secret Management
 
-## Azure App Service (Non-sensitive)
+Sensitive values are stored inside Azure Key Vault.
 
-```text
-APP_ENV=production
+Examples
 
-LLM_MODEL=llama-3.1-8b-instant
+- GROQ_API_KEY
+- OPEN_WEATHER_API_KEY
 
-TEMPERATURE=0.4
+Non-sensitive configuration is stored in Azure App Service Configuration.
 
-KEYVAULT_URL=https://<keyvault>.vault.azure.net/
+Examples
+
+- LLM_MODEL
+- TEMPERATURE
+
+---
+
+# CI/CD Pipeline
+
+Continuous Integration
+
+```
+Push
+
+↓
+
+Install Dependencies
+
+↓
+
+Lint
+
+↓
+
+Run Tests
+
+↓
+
+Success
+```
+
+Continuous Deployment
+
+```
+CI Success
+
+↓
+
+Azure Login (OIDC)
+
+↓
+
+Deploy to Azure App Service
+
+↓
+
+Application Restart
 ```
 
 ---
 
-## Azure Key Vault (Secrets)
+# Git Workflow
 
-```text
-groq-api-key
+```
+main
 
-open-weather-api-key
+develop
 
-langsmith-api-key
+feature/*
+```
 
-google-api-key
+Example
+
+```
+feature/rag
+
+feature/key-vault
+
+feature/azure-app-service
+
+feature/github-actions
+
+feature/deployment
 ```
 
 ---
 
-# 🔁 CI/CD
+# Security
 
-GitHub Actions automatically:
+✔ Azure Key Vault
 
-- Checkout source code
-- Install dependencies
-- Ruff linting
-- Black formatting
-- Run tests
-- Authenticate with Azure (OIDC)
-- Deploy to Azure App Service
+✔ Managed Identity
 
----
+✔ OIDC Authentication
 
-# ⚡ Performance Strategy
+✔ GitHub Secrets
 
-- Deterministic routing
-- Minimized LLM calls
-- Fast tool execution
-- RAG microservice isolation
-- Configurable recursion limits
+✔ No API Keys committed to Git
 
 ---
 
-# 🛡 Security
+# Future Improvements
 
-- Azure Key Vault
-- Managed Identity
-- RBAC
-- No secrets committed to Git
-- Infrastructure as Code
-
----
-
-# 📌 Useful Commands
-
-Run application
-
-```bash
-uvicorn app.main:app --reload
-```
-
-Export dependencies
-
-```bash
-poetry export -f requirements.txt --output requirements.txt --without-hashes
-```
-
-Terraform
-
-```bash
-terraform init
-
-terraform plan
-
-terraform apply
-
-terraform destroy
-```
-
-Azure Login
-
-```bash
-az login
-```
-
-Deploy
-
-```bash
-az webapp deploy \
-  --resource-group <resource-group> \
-  --name <app-service-name> \
-  --src-path app.zip
-```
-
----
-
-# 🚀 Roadmap
-
+- Azure AI Search
+- Azure Cosmos DB
 - Azure App Configuration
-- Azure Monitor
+- Docker Support
+- Terraform Infrastructure
+- Monitoring
 - Application Insights
-- Docker
-- Azure Container Apps
-- Kubernetes
-- Azure OpenAI
-- Redis Cache
-- Semantic Caching
+- Prompt Versioning
 
 ---
 
-# 📄 License
+# Author
+
+Nikunj Jadav
+
+Senior Backend Developer (PHP/WordPress/Shopify)
+
+Transitioning into Python Backend & AI Engineering
+
+GitHub
+
+https://github.com/nikunj-jadav-backend-developer
+
+LinkedIn
+
+https://www.linkedin.com/in/nikunj-jadav-backend-developer/
+
+Preview URL 
+
+https://apps-srvapi-development-svkc7t.azurewebsites.net/
+
+---
+
+# License
 
 MIT License
