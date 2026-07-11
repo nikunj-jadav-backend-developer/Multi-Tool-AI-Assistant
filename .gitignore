@@ -8,3 +8,10 @@ agent_old.py
 .ruff_cache
 *.egg-info/
 .venv/
+.pytest_cache/
+.pytest_cache
+.git/
+.github/
+data/
+project.zip
+*.zip
