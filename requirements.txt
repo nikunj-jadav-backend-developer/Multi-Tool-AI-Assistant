@@ -94,7 +94,6 @@ MarkupSafe==3.0.3
 marshmallow==3.26.2
 mdurl==0.1.2
 mpmath==1.3.0
--e git+ssh://git@github.com/nikunjjadav123/Multi-Tool-AI-Assistant.git@6fa08c068cbf58aa1ac7ae62c46562e0435b52db#egg=multi_tool_ai
 multidict==6.7.1
 mypy_extensions==1.1.0
 narwhals==2.16.0
