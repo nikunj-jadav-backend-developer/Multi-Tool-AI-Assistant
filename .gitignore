@@ -7,3 +7,4 @@ agent_old.py
 .ruff_cache/
 .ruff_cache
 *.egg-info/
+.venv/
