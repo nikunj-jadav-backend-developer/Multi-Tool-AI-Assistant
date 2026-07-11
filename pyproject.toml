@@ -7,8 +7,12 @@ name = "multi-tool-ai"
 version = "0.1.0"
 requires-python = ">=3.12,<3.13"
 
+[tool.poetry]
+package-mode = false
+
 [tool.setuptools.packages.find]
 where = ["src"]
+
 [tool.poetry.dependencies]
 pymongo = ">=4.12,<4.17"
 langgraph-checkpoint-mongodb = "^0.4.0"
