@@ -1,5 +1,6 @@
 from langchain_tavily import TavilySearch
 from langchain.tools import tool
+from app.config.settings import TAVILY_API_KEY
 
 # @tool
 # def general_search(query:str):
@@ -16,4 +17,4 @@ from langchain.tools import tool
 def news_search(query: str):
     """Search for news"""
     print("News Search tool loaded")
-    return TavilySearch(max_results=5, topic="news").run(query)
+    return TavilySearch(tavily_api_key=TAVILY_API_KEY,max_results=5, topic="news").run(query)
