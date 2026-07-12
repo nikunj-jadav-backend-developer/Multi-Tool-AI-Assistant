@@ -4,7 +4,7 @@ from langchain_core.tools import tool
 from pydantic import BaseModel, Field
 from dotenv import load_dotenv
 from typing import Optional
-from app.config.settings import OPENWEATHER_API_KEY
+from app.config.settings import OPEN_WEATHER_API_KEY
 load_dotenv()
 
 API_KEY = OPENWEATHER_API_KEY
