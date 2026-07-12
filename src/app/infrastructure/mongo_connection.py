@@ -1,13 +1,13 @@
-import os
 from pymongo import MongoClient
-from dotenv import load_dotenv
-
-load_dotenv()
+from app.config.settings import (
+    MONGO_URI,
+    MONGO_DB
+)
 
 
 def get_database():
-    uri = os.getenv("MONGO_URI")
-    db_name = os.getenv("MONGO_DB")
+    uri = MONGO_URI
+    db_name = MONGO_DB
 
     client = MongoClient(uri)
     return client[db_name]
