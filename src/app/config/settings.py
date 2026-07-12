@@ -18,7 +18,11 @@ if APP_ENV == "production":
     GROQ_API_KEY = get_secret("groq-api-key")
     OPEN_WEATHER_API_KEY = get_secret("open-weather-api-key")
     TAVILY_API_KEY = get_secret("tavily-api-key")
+    MONGO_URI = get_secret("mongo-uri")
+    MONGO_DB = get_secret("mongo-db")
 else:
     GROQ_API_KEY = os.getenv("GROQ_API_KEY")
     OPEN_WEATHER_API_KEY = os.getenv("OPEN_WEATHER_API_KEY")
     TAVILY_API_KEY = os.getenv("TAVILY_API_KEY")
+    MONGO_URI = os.getenv("MONGO_URI")
+    MONGO_DB = os.getenv("MONGO_DB")
