@@ -7,7 +7,7 @@ from typing import Optional
 from app.config.settings import OPEN_WEATHER_API_KEY
 load_dotenv()
 
-API_KEY = OPENWEATHER_API_KEY
+API_KEY = OPEN_WEATHER_API_KEY
 
 
 # Tool Input Schema
